@@ -4,9 +4,9 @@ def split_sysname(namestr):
 
 def solarmasses_to_kg(stellar_mass):
 	# convert stellar masses from multiples of the sun's mass to kilograms
-	pass
+	return float(stellar_mass) / (1.989*10**30) 
 
-def megatons_to_kg(mass_mt):
-	# convert ring mass from megatons to kilograms
-	pass
+def megatonnes_to_kg(mass_mt):
+	# convert ring mass from (metric?) megatonnes to kilograms
+	return float(mass_mt) / float(1000000000) # because python is funky with it's integer division
 	
