@@ -14,4 +14,12 @@ class EliteEventStreamer:
 
     def getEvents(self): # get all events since last call
         return [json.loads(x) for x in self.currentlogfile.readlines()]
-        
+
+    def __del__(self): #runs when reference counter <=0
+        self.currentlogfile.close()
+
+    def updateLogFile(self): # start reading from the newest log file
+        filepaths = [x for x in os.listdir() if '.log' in x]
+        filepaths.sort()
+        self.currentlogfile.close()
+        self.currentlogfile = open(filepaths[-1])
