@@ -8,5 +8,5 @@ def solarmasses_to_kg(stellar_mass):
 
 def megatonnes_to_kg(mass_mt):
 	# convert ring mass from (metric?) megatonnes to kilograms
-	return float(mass_mt) / float(1000000000) # because python is funky with it's integer division
+	return float(mass_mt) / float(1000000000) # because python is funky with its integer division
 	
