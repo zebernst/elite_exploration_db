@@ -10,7 +10,9 @@ class EliteEventStreamer:
         os.chdir(EliteEventStreamer.logfolderpath)
         filepaths = [x for x in os.listdir() if '.log' in x]
         filepaths.sort()
-        self.currentlogfile = open(filepaths[-1])
+        self.currentlogfilepath = filepaths[-1]
+        self.currentlogfile = open(self.currentlogfilepath)
+        
 
     def getEvents(self): # get all events since last call
         return [json.loads(x) for x in self.currentlogfile.readlines()]
@@ -22,4 +24,9 @@ class EliteEventStreamer:
         filepaths = [x for x in os.listdir() if '.log' in x]
         filepaths.sort()
         self.currentlogfile.close()
-        self.currentlogfile = open(filepaths[-1])
+        self.currentlogfilepath = filepaths[-1]
+        self.currentlogfile = open(self.currentlogfilepath)
+
+    def __repr__(self): 
+        return "<{}():{}>".format(self.__class__.__name__+,self.currentlogfilepath)
+        #since it is not possible to reproduce an event streamer by passing an argument
