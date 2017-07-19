@@ -1,7 +1,5 @@
 import os #for getting filenames & current user's folder
 import json
-from time import sleep
-
 
 class EliteEventStreamer:
     logfolderpath = os.environ['userprofile']+r"\Saved Games\Frontier Developments\Elite Dangerous"
