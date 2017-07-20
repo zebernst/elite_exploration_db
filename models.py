@@ -117,5 +117,44 @@ class Ring(BaseModel):
         self.ring_class = data.get('RingClass')
         self.mass = data.get('MassMT') #in megatons
         self.inner_radius = data.get('InnerRad')
-        self.outer_radius = data.get(OuterRad)
+        self.outer_radius = data.get('OuterRad')
         self.reserve_level = RESERVE_LEVELS.get(reserves)
+
+class MaterialRecord(BaseModel):
+
+    MATERIALS = [
+        'antimony',
+        'arsenic',
+        'cadmium',
+        'carbon',
+        'chromium',
+        'germanium',
+        'iron',
+        'manganese',
+        'mercury',
+        'molybdenum',
+        'nickel',
+        'niobium',
+        'phosphorus',
+        'polonium',
+        'ruthenium',
+        'selenium',
+        'sulphur',
+        'technetium',
+        'tellurium',
+        'tin',
+        'tungsten',
+        'vanadium',
+        'yttrium',
+        'zinc',
+        'zirconium' ]
+    
+    def __init__(self, data : list):
+
+        for material in data:
+            # for dict in list of dicts
+            setattr(self, material.get('Name'), material.get('Percent'))
+
+        for material in self.MATERIALS:
+            if not hasattr(self, material):
+                setattr(self, material, None)
